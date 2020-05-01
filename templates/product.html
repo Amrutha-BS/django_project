@@ -69,6 +69,7 @@
                     </div>
                   </div>
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                       
                   </div>
                </div>
             </div>
@@ -78,7 +79,7 @@
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                        <div class="logo"> <a href="index.html"><img src="{% static 'images/logo.png' %}" alt="logo"/></a> </div>
+                        <div class="logo"> <a href="index.html"><img src="{% static 'images\logo.png' %}" alt="logo"/></a> </div>
                      </div>
                   </div>
                </div>
@@ -87,12 +88,17 @@
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                              <li > <a href="index.html">Home</a> </li>
+                              <li class="active"> <a href="index.html">Home</a> </li>
                               <li> <a href="about.html">About</a> </li>
-                              <li class="active"> <a href="product.html">product</a> </li>
-                              <li> <a href="blog.html"> Blog</a> </li>
+                              <li> <a href="product.html">product</a> </li>
+                              <!---<li> <a href="blog.html"> Blog</a> </li>-->
                               <li> <a href="contact.html">Contact</a> </li>
-                              <li class="mean-last"> <a href="signup.html">signup</a> </li>
+                              {% if user.is_authenticated %}
+                              
+                              <li class="mean-last"> <a href='accounts/logout'>logout</a> </li>
+                              <p align="right">Hello, {{user.first_name}}!</p>
+                              {% else %}
+                              <li class="mean-last"> <a href='accounts/signup'>signup</a> </li>
                                
                            </ul>
                         </nav>
@@ -100,8 +106,9 @@
                   </div>
                </div>
                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-                  <li><a class="buy" href="login.html">Login</a></li>
+                  <li><a class="buy" href="accounts/login">Login</a></li>
                </div>
+               {% endif %}
             </div>
          </div>
          <!-- end header inner --> 
@@ -141,11 +148,11 @@
                      <span>Rs.{{pro.price}}</span><br>
                      <!--<span>{{dest.date|timesince}}</span><br>-->
                      <div>
-                     <a class="button" href="login.html">Bid</a>
+                        <a class="button" href="bid.html/{{pro.id}}/{{user.id}}">Bid</a>
                      </div>
-                     <!--<span>makeTimer({{dest.date}})</span>-->
+                     <!--<span>makeTimer({{dest.date}})</span>
                      <iframe src="http://free.timeanddate.com/countdown/i77nkd4x/n438/cf12/cm0/cu4/ct0/cs1/ca0/co1/cr0/ss0/cacfff/cpcfff/pc000/tc66c/fs100/szw320/szh135/tacfff/tpcfff/iso{{dest.date}}T00:00:00/pl4/pr4/pt4/pb4" allowTransparency="true" frameborder="0" width="126" height="38"></iframe>
-                     
+                     -->
                      
                      </div>
                </div>
@@ -155,7 +162,7 @@
          </div>
          <br>
                <br>
-               <div class="col-md-6 offset-md-3">
+               <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                <a href="product2.html"><h3><b>>>next page</b></h3></a>
                </div>
                

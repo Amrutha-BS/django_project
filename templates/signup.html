@@ -87,24 +87,38 @@
     </div>
 
     <!-- contact -->
+    <div class="col-md-12">
+      {% for message in messages %}
+      <script>
+      <h3>alert('{{message}}')</h3>
+     </script>
+      {% endfor %}
+   </div>
     <div class="contact">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
 
-                    <form class="main_form">
+                    <form class="main_form" action="signup" method="post">
+                       {% csrf_token %}
                         <div class="row">
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                <input class="form-control" placeholder="Your name" type="text" name="Your Name">
+                                <input class="form-control" placeholder="First name" type="text" name="First Name">
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                <input class="form-control" placeholder="Email" type="text" name="Email">
+                              <input class="form-control" placeholder="Last name" type="text" name="Last Name">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                              <input class="form-control" placeholder="user name" type="text" name="user Name">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <input class="form-control" placeholder="Email" type="email" name="email">
                             </div>
                             <div class=" col-md-12">
-                                <input class="form-control" placeholder="Password" type="password" name="Password">
+                                <input class="form-control" placeholder="Password" type="password" name="Password1">
                             </div>
                             <div class="col-md-12">
-                                <input  class="form-control" placeholder="Confirm Password" type="password" name="Confirm Password">
+                                <input  class="form-control" placeholder="Confirm Password" type="password" name="Password2">
                             </div>
                             <label>
                                 <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me 
@@ -113,17 +127,18 @@
                               <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-                                <td><a class="buy" href="login.html">cancel</a></td>
+                                <td><a class="buy" href="login">cancel</a></td>
                              </div> 
                             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-                                <td><a class="buy" href="index.html">Signup</a></td>
-                             </div>   -
+                                <td><input class="buy" type="Submit"></td>
+                             </div>   
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    
     <!-- end contact -->
       <!--  footer --> 
       <footr>

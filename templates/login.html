@@ -87,15 +87,21 @@
     </div>
 
     <!-- contact -->
+    <div class="col-md-12">
+      {% for message in messages %}
+      <h3>{{message}}</h3>
+      {% endfor %}
+   </div>
     <div class="contact">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
 
-                    <form class="main_form">
+                    <form class="main_form" action="login" method="post">
+                       {% csrf_token %}
                         <div class="row">
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                <input class="form-control" placeholder="User name/Email" type="text" name="User Name">
+                                <input class="form-control" placeholder="User name/Email" type="text" name="user Name">
                             </div>
                             
                             <div class=" col-md-12">
@@ -105,13 +111,13 @@
                                 <input type="checkbox"  name="remember" style="margin-bottom:15px"> Remember me  
                             </label>
                             <div class=" col-md-12">
-                                <button type="button" class="cancelbtn"><a href="login.html">cancel</a></button>
+                                <button type="button" class="cancelbtn"><a href="signup">cancel</a></button>
                             </div>  
                         </div>
                         <table>
                             <tr>
                                 <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-                                   <td><a class="buy" href="index.html">Login</a></td>
+                                   <td><input class="buy" type="submit"></td>
                                 </div>
                                 <td>    </td>
                                 <td>    </td>
@@ -129,7 +135,7 @@
                                 <td>    </td>
                                    <td><i>Don't have an account?</i></td>
                                 <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-                                    <td><a class="buy" href="Signup.html">Signup</a></td>
+                                    <td><a class="buy" href="signup">Signup</a></td>
                                 </div>
                             </tr>
                         </table>

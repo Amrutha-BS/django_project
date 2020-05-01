@@ -78,9 +78,14 @@
                               <li class="active"> <a href="index.html">Home</a> </li>
                               <li> <a href="about.html">About</a> </li>
                               <li> <a href="product.html">product</a> </li>
-                              <li> <a href="blog.html"> Blog</a> </li>
+                              <!---<li> <a href="blog.html"> Blog</a> </li>-->
                               <li> <a href="contact.html">Contact</a> </li>
-                              <li class="mean-last"> <a href="signup.html">signup</a> </li>
+                              {% if user.is_authenticated %}
+                              
+                              <li class="mean-last"> <a href='accounts/logout'>logout</a> </li>
+                              <p align="right">Hello, {{user.first_name}}!</p>
+                              {% else %}
+                              <li class="mean-last"> <a href='accounts/signup'>signup</a> </li>
                                
                            </ul>
                         </nav>
@@ -88,8 +93,9 @@
                   </div>
                </div>
                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-                  <li><a class="buy" href="login.html">Login</a></li>
+                  <li><a class="buy" href="accounts/login">Login</a></li>
                </div>
+               {% endif %}
             </div>
          </div>
          <!-- end header inner --> 
@@ -107,8 +113,9 @@
           <dir>
             <div>
                <h1><p align="center"><b>A FEW WORDS ABOUT US</b></p></h1><font size="10">
-               <p align="center"><i>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum.</i></p>
-               <p><i>Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</i></p>
+               <p align="center"><i>Haggle  was built to take auctions to online platform.We resolve to provide an easy procedure for placing a bid and selling products on an online site.<br>
+                                  We want to keep it very simple and at the same time very secure</i></p>
+               <p align="center"><i>Haggle team constantly thrives to give its users a rich,hassle free and user friendly online auction experience.</i></p>
             </div>
          </dir> 
       </div>
