@@ -3,19 +3,21 @@ from .models import Destination,contact_Us
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.models import User,auth
-from rest_framework import viewsets         
+from rest_framework import viewsets
 from .serializers import DestinationSerializer,contact_UsSerializer
-from django.views.generic.edit import DeleteView 
-from django.shortcuts import (get_object_or_404, render,HttpResponseRedirect) 
+from django.views.generic.edit import DeleteView
+from django.shortcuts import (get_object_or_404, render,HttpResponseRedirect)
 
 
-class DestinationView(viewsets.ModelViewSet):       
-      serializer_class = DestinationSerializer         
-      queryset =Destination.objects.all()  
 
-class contact_UsView(viewsets.ModelViewSet):       
-      serializer_class =contact_UsSerializer         
-      queryset = contact_Us.objects.all()   
+
+class DestinationView(viewsets.ModelViewSet):
+      serializer_class = DestinationSerializer
+      queryset =Destination.objects.all()
+
+class contact_UsView(viewsets.ModelViewSet):
+      serializer_class =contact_UsSerializer
+      queryset = contact_Us.objects.all()
 
 
 # Create your views here.
@@ -50,7 +52,7 @@ def product3(request):
 
 def bid(request,id,userid):
     if request.method=="POST":
-        
+
         quoted_price=request.POST['bidamt']
         user=User.objects.get(id=userid)
         user_fname=user.first_name
@@ -63,7 +65,7 @@ def bid(request,id,userid):
         seller_fname=seller.seller_fname
         seller_lname=seller.seller_lname
         seller_email=seller.email
-        
+
         subject = 'Regarding product bidding on haggle.com'
         message = user_fname+" "+user_lname+' is interested in your  '+pro_name +' \nhere are the details of the bid\nquoted price: '+ quoted_price+' \nemailid: '+user_email+'\n'+'\nWith Regards\n'+'Haggle Team'
         email_from = settings.EMAIL_HOST_USER
@@ -79,13 +81,13 @@ def bid(request,id,userid):
 def sell(request):
     if request.method=="POST":
         name=request.POST['product Name']
-        img=request.POST['product img']
+        img=request.FILES['product img']
         desc=request.POST['product description']
         price=request.POST['product price']
         seller_fname=request.POST['First Name']
         seller_lname=request.POST['Last Name']
         email=request.POST['email']
-       
+
         sellers=Destination.objects.create(name=name,img=img,desc=desc,price=price,seller_fname=seller_fname,seller_lname=seller_lname,email=email)
         sellers.save()
         print("product displayed")
@@ -99,30 +101,29 @@ def login(request):
 
 def signup(request):
     return render(request,"signup.html")
-  
-# delete view for details 
-def delete_view(request, id): 
-    # dictionary for initial data with  
-    # field names as keys 
-    context ={} 
-  
-    # fetch the object related to passed id 
-    obj = get_object_or_404(Destination, id = id) 
-  
-  
-    if request.method =="POST": 
-        # delete object 
-        obj.delete() 
-        # after deleting redirect to  
-        # home page 
-        return HttpResponseRedirect("/") 
-  
-    return render(request, "delete_view.html", context) 
+
+# delete view for details
+def delete_view(request, id):
+    # dictionary for initial data with
+    # field names as keys
+    context ={}
+
+    # fetch the object related to passed id
+    obj = get_object_or_404(Destination, id = id)
+
+
+    if request.method =="POST":
+        # delete object
+        obj.delete()
+        # after deleting redirect to
+        # home page
+        return HttpResponseRedirect("/")
+
+    return render(request, "delete_view.html", context)
 
 
 
 
 
- 
 
- 
+
